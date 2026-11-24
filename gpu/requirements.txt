@@ -1,0 +1,15 @@
+# 2026-11-24 に runs/000_env/freeze.txt から固定（トップレベルのみ。依存は pip が解決）。
+# torch は CUDA 12.6 wheel: pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cu126 （000_env.sh が先に入れる）
+transformers==5.24.0
+datasets==5.2.0
+accelerate==1.16.0
+huggingface_hub==2.4.0
+safetensors==0.8.0
+tokenizers==0.23.3
+numpy==2.5.5
+scikit-learn==1.9.1
+seqeval==1.2.2
+sentencepiece==0.2.3
+pandas==3.1.1
+pyarrow==26.0.1
+tqdm==4.70.1
