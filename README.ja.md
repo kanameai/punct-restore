@@ -25,7 +25,7 @@
 ## すぐ試す
 
 ```bash
-pip install punct-restore
+pip install git+https://github.com/kanameai/punct-restore   # PyPI（pip install punct-restore）は準備中
 punct-restore "すみません駅まではどう行けばいいですか"
 # すみません、駅まではどう行けばいいですか？
 ```

@@ -26,7 +26,7 @@
 ## Quick start
 
 ```bash
-pip install punct-restore
+pip install git+https://github.com/kanameai/punct-restore   # PyPI release (pip install punct-restore) coming soon
 punct-restore "すみません駅まではどう行けばいいですか"
 # すみません、駅まではどう行けばいいですか？
 ```
