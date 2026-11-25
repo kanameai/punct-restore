@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "punct-restore"
+version = "0.1.0"
+description = "Restore punctuation and capitalization in ASR output - 11 languages incl. Japanese, Chinese, Korean"
+readme = "PYPI.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "kanameai" }]
+requires-python = ">=3.9"
+dependencies = ["torch>=2.0", "transformers>=4.40"]
+keywords = ["punctuation", "punctuation-restoration", "truecasing", "asr", "speech-recognition", "japanese", "multilingual", "whisper"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Text Processing :: Linguistic",
+  "Natural Language :: Japanese",
+  "Natural Language :: English",
+  "Natural Language :: Chinese (Simplified)",
+  "Natural Language :: Korean",
+]
+
+[project.urls]
+Homepage = "https://github.com/kanameai/punct-restore"
+"Model (base)" = "https://huggingface.co/kanameaijp/punct-restore-multilingual-base"
+"Model (small)" = "https://huggingface.co/kanameaijp/punct-restore-multilingual-small"
+
+[project.scripts]
+punct-restore = "punct_restore.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/punct_restore"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/punct_restore", "PYPI.md", "LICENSE", "pyproject.toml"]
