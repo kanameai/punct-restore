@@ -26,22 +26,22 @@
 ## Quick start
 
 ```bash
-pip install torch transformers
-git clone https://github.com/kanameai/punct-restore && cd punct-restore
-python publish/punct_restore.py kanameaijp/punct-restore-multilingual-small "今日は朝から雨が降っていましたが午後には止んだので公園まで散歩に出かけました"
-# 今日は朝から雨が降っていましたが、午後には止んだので、公園まで散歩に出かけました。
+pip install punct-restore
+punct-restore "すみません駅まではどう行けばいいですか"
+# すみません、駅まではどう行けばいいですか？
 ```
 
 ```python
-from transformers import AutoModelForTokenClassification, AutoTokenizer
-from punct_restore import restore   # publish/punct_restore.py (also in the model repos)
+from punct_restore import PunctRestorer
 
-name = "kanameaijp/punct-restore-multilingual-small"
-tok = AutoTokenizer.from_pretrained(name)
-model = AutoModelForTokenClassification.from_pretrained(name).eval()
-print(restore(model, tok, "what time does the train to berlin leave and do i need to change in hannover"))
-# What time does the train to Berlin leave and do I need to change in Hannover?
+pr = PunctRestorer()           # "small" (141M, default); PunctRestorer("base") for best quality
+pr("what time does the train to berlin leave and do i need to change in hannover")
+# 'What time does the train to Berlin leave, and do I need to change in Hannover?'
+pr(["今日は朝から雨が降っていましたが午後には止んだので公園まで散歩に出かけました", "..."])  # lists work too
 ```
+
+The command line reads one text per line from stdin when no text is given: `cat transcript.txt | punct-restore -m base`.
+Without the package: `pip install torch transformers` and use `publish/punct_restore.py` (also in the model repos).
 
 Typical uses: cleaning up Whisper / other ASR transcripts, subtitles, meeting notes, voice memos, and text from tools that drop punctuation.
 

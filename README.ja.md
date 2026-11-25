@@ -25,11 +25,19 @@
 ## すぐ試す
 
 ```bash
-pip install torch transformers
-git clone https://github.com/kanameai/punct-restore && cd punct-restore
-python publish/punct_restore.py kanameaijp/punct-restore-multilingual-small "すみません駅まではどう行けばいいですか"
+pip install punct-restore
+punct-restore "すみません駅まではどう行けばいいですか"
 # すみません、駅まではどう行けばいいですか？
 ```
+
+```python
+from punct_restore import PunctRestorer
+pr = PunctRestorer()          # small（既定）。精度優先なら PunctRestorer("base")
+pr("今日は朝から雨が降っていましたが午後には止んだので公園まで散歩に出かけました")
+# '今日は朝から雨が降っていましたが、午後には止んだので、公園まで散歩に出かけました。'
+```
+
+文字起こしのファイルは 1 行ずつ処理できます: `cat transcript.txt | punct-restore -m base`
 
 使いみち: Whisper などの文字起こしの整形、字幕、議事録、ボイスメモ。
 

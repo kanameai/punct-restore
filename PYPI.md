@@ -8,7 +8,7 @@ Restore **punctuation and capital letters** in unpunctuated text such as speech-
 ```bash
 pip install punct-restore
 punct-restore "what time does the train to berlin leave and do i need to change in hannover"
-# What time does the train to Berlin leave and do I need to change in Hannover?
+# What time does the train to Berlin leave, and do I need to change in Hannover?
 ```
 
 ```python
